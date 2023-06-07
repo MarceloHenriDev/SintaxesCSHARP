@@ -1,17 +1,28 @@
-﻿using System.Globalization;
-namespace a
+﻿using System;
+using Enum1.Entities;
+using Enum1.Entities.Enums;
+
+namespace Course
 {
     class Program
     {
         static void Main(string[] args)
         {
-            double preco = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-            double desconto = (preco < 20.0) ? preco * 0.1 : preco * 0.05;
-            // if else mas com sintaxe diferente. expressão condicional ternaria
-            // (condição) ? valor_se_verdadeiro : valor_se_falso
-         
-            Console.WriteLine(desconto);
+            Order order = new Order
+            {
+                Id = 1080,
+                Moment = DateTime.Now,
+                Status = OrderStatus.PendingPayment
 
+            };
+            Console.WriteLine(order);
+
+            string txt = OrderStatus.PendingPayment.ToString();
+
+            Console.WriteLine(txt);
+
+            OrderStatus os = Enum.Parse<OrderStatus>("Delivered");
+            Console.WriteLine(os);
         }
     }
 }
